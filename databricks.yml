@@ -11,9 +11,6 @@ variables:
   schema:
     description: Demo schema under the target catalog.
     default: racetrac_agent_demo
-  warehouse_id:
-    description: SQL warehouse for Genie and SQL-based checks.
-    default: "replace-with-warehouse-id"
 
 targets:
   dev:

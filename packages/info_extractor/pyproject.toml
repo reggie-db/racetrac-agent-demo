@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "info-extractor"
-version = "0.0.1"
+version = "0.0.1+gce7f286"
 requires-python = ">=3.12,<3.13"
 description = "Information extraction demo brick for RaceTrac operations events."
 dependencies = ["common @ file://${PROJECT_ROOT}/../common"]

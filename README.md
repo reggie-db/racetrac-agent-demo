@@ -23,6 +23,7 @@ The default Unity Catalog targets are:
 - `packages/genie_space/src/genie_space/provisioning.py`: Genie space setup payload helper
 - `packages/supervisor`: orchestration brick that composes outputs
 - `packages/notebooks/notebooks`: demo notebooks and dummy data setup
+- `packages/pump_ops_app`: Reflex app UI for all demo features (not deployed in bundle)
 
 ## Demo Story (meeting aligned)
 
@@ -78,4 +79,10 @@ Run full demo with dummy data prep:
 
 ```bash
 pixi run bundle-run-demo
+```
+
+Run the Reflex demo app locally:
+
+```bash
+pixi run run-reflex-app
 ```

@@ -8,8 +8,8 @@ bootstrap_local_packages()
 configure_logging()
 
 from common.config import DEFAULT_CATALOG, DEFAULT_SCHEMA  # noqa: E402
-from lfp_logging import logs  # noqa: E402
 from common.sql import create_schema_sql  # noqa: E402
+from lfp_logging import logs  # noqa: E402
 
 LOG = logs.logger()
 spark = get_spark_session()

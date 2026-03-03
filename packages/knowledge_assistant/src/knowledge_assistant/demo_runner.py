@@ -12,7 +12,9 @@ def run_knowledge_assistant_demo() -> dict[str, object]:
     """Run a deterministic local demo question against synthetic docs."""
     docs = generate_knowledge_docs(row_count=40)
     agent = KnowledgeAssistantAgent()
-    question = "How should stores escalate pump breakdown alerts and maintenance violations?"
+    question = (
+        "How should stores escalate pump breakdown alerts and maintenance violations?"
+    )
     response = agent.answer_question(query=question, documents=docs)
     LOG.info("Knowledge assistant citations: %s", response["citations"])
     return response

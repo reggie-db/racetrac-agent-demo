@@ -1,7 +1,8 @@
 """Entrypoint for the information extraction brick demo."""
 
-from info_extractor.agent import InfoExtractorAgent
 from lfp_logging import logs
+
+from info_extractor.agent import InfoExtractorAgent
 
 LOG = logs.logger()
 

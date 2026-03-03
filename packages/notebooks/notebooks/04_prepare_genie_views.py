@@ -8,7 +8,10 @@ bootstrap_local_packages()
 configure_logging()
 
 from common.config import DemoTableRefs  # noqa: E402
-from common.sql import fuel_price_forecast_view_sql, pump_maintenance_forecast_view_sql  # noqa: E402
+from common.sql import (  # noqa: E402
+    fuel_price_forecast_view_sql,
+    pump_maintenance_forecast_view_sql,
+)
 from lfp_logging import logs  # noqa: E402
 
 LOG = logs.logger()

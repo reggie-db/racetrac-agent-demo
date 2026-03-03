@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "common"
-version = "0.0.1"
+version = "0.0.1+gce7f286"
 requires-python = ">=3.12,<3.13"
 description = "Shared utilities and models for RaceTrac agent demos."
 dependencies = ["faker>=37.0.0", "pydantic>=2.11.0"]

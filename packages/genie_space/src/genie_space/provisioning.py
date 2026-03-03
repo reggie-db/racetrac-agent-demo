@@ -4,7 +4,9 @@ from common.config import DemoTableRefs
 from common.sql import fuel_price_forecast_view_sql, pump_maintenance_forecast_view_sql
 
 
-def build_genie_space_instruction(refs: DemoTableRefs | None = None) -> dict[str, object]:
+def build_genie_space_instruction(
+    refs: DemoTableRefs | None = None,
+) -> dict[str, object]:
     """Return a payload-style instruction object for creating a Genie space."""
     table_refs = refs or DemoTableRefs()
     return {

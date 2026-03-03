@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "knowledge-assistant"
-version = "0.0.1"
+version = "0.0.1+gce7f286"
 requires-python = ">=3.12,<3.13"
 description = "RAG-style Knowledge Assistant demo brick for RaceTrac."
 dependencies = ["common @ file://${PROJECT_ROOT}/../common"]

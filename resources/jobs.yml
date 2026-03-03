@@ -6,6 +6,10 @@ resources:
         - environment_key: default
           spec:
             client: "1"
+            dependencies:
+              - "lfp-logging @ git+https://github.com/regbo/lfp-logging-py.git"
+              - "faker>=37.0.0"
+              - "pydantic>=2.11.0"
       tasks:
         - task_key: setup_catalog_schema
           notebook_task:
@@ -35,6 +39,10 @@ resources:
         - environment_key: default
           spec:
             client: "1"
+            dependencies:
+              - "lfp-logging @ git+https://github.com/regbo/lfp-logging-py.git"
+              - "faker>=37.0.0"
+              - "pydantic>=2.11.0"
       tasks:
         - task_key: setup_catalog_schema
           notebook_task:

@@ -37,7 +37,9 @@ def generate_store_transactions(row_count: int = 500) -> list[dict[str, object]]
                 "store_id": f"RT-{random.randint(100, 450)}",
                 "pump_id": f"P-{random.randint(1, 20):02d}",
                 "transaction_ts": transaction_time.isoformat(),
-                "fuel_grade": random.choice(["regular", "midgrade", "premium", "diesel"]),
+                "fuel_grade": random.choice(
+                    ["regular", "midgrade", "premium", "diesel"]
+                ),
                 "gallons_sold": round(random.uniform(6.0, 27.0), 3),
                 "price_per_gallon": round(random.uniform(2.55, 4.85), 3),
                 "gross_sales": round(random.uniform(20.0, 130.0), 2),

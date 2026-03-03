@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "supervisor"
-version = "0.0.1"
+version = "0.0.1+gce7f286"
 requires-python = ">=3.12,<3.13"
 description = "Supervisor demo brick that orchestrates KA, extraction, and Genie."
 dependencies = [

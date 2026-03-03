@@ -16,14 +16,22 @@ name = "agent-demo"
 channels = ["conda-forge"]
 platforms = ["osx-arm64"]
 
-
 [tool.pixi.environments]
 default = { solve-group = "default" }
 dev = { features = ["dev"], solve-group = "default" }
 
 [tool.pixi.tasks]
 bundle-validate = "bash scripts/validate_bundle.sh"
-bundle-deploy = { cmd = "bash scripts/deploy_bundle.sh", depends-on = ["bundle-validate"] }
-bundle-populate-dummy-data = { cmd = "bash scripts/populate_dummy_data.sh", depends-on = ["bundle-deploy"] }
-bundle-deploy-with-dummy-data = { cmd = "echo bundle deployed and dummy data populated", depends-on = ["bundle-populate-dummy-data"] }
-bundle-run-demo = { cmd = "bash scripts/run_demo_with_prep.sh", depends-on = ["bundle-deploy"] }
+bundle-deploy = { cmd = "bash scripts/deploy_bundle.sh", depends-on = [
+    "bundle-validate",
+] }
+bundle-populate-dummy-data = { cmd = "bash scripts/populate_dummy_data.sh", depends-on = [
+    "bundle-deploy",
+] }
+bundle-deploy-with-dummy-data = { cmd = "echo bundle deployed and dummy data populated", depends-on = [
+    "bundle-populate-dummy-data",
+] }
+bundle-run-demo = { cmd = "bash scripts/run_demo_with_prep.sh", depends-on = [
+    "bundle-deploy",
+] }
+app = "bash scripts/run_reflex_app.sh"
