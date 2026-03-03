@@ -1,0 +1,33 @@
+[build-system]
+requires = ["uv_build>=0.9.6,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "notebooks"
+version = "0.0.1"
+requires-python = ">=3.12,<3.13"
+description = "Databricks notebook assets for the RaceTrac agent demo."
+dependencies = [
+    "common @ file://${PROJECT_ROOT}/../common",
+    "genie-space @ file://${PROJECT_ROOT}/../genie_space",
+    "info-extractor @ file://${PROJECT_ROOT}/../info_extractor",
+    "knowledge-assistant @ file://${PROJECT_ROOT}/../knowledge_assistant",
+    "supervisor @ file://${PROJECT_ROOT}/../supervisor",
+    "pyspark>=3.5.0",
+]
+
+[tool.uv.sources]
+[tool.uv.sources.supervisor]
+workspace = true
+
+[tool.uv.sources.knowledge-assistant]
+workspace = true
+
+[tool.uv.sources.info-extractor]
+workspace = true
+
+[tool.uv.sources.genie-space]
+workspace = true
+
+[tool.uv.sources.common]
+workspace = true

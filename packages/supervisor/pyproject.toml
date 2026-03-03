@@ -1,0 +1,28 @@
+[build-system]
+requires = ["uv_build>=0.9.6,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "supervisor"
+version = "0.0.1"
+requires-python = ">=3.12,<3.13"
+description = "Supervisor demo brick that orchestrates KA, extraction, and Genie."
+dependencies = [
+    "common @ file://${PROJECT_ROOT}/../common",
+    "genie-space @ file://${PROJECT_ROOT}/../genie_space",
+    "info-extractor @ file://${PROJECT_ROOT}/../info_extractor",
+    "knowledge-assistant @ file://${PROJECT_ROOT}/../knowledge_assistant",
+]
+
+[tool.uv.sources]
+[tool.uv.sources.knowledge-assistant]
+workspace = true
+
+[tool.uv.sources.info-extractor]
+workspace = true
+
+[tool.uv.sources.genie-space]
+workspace = true
+
+[tool.uv.sources.common]
+workspace = true

@@ -1,0 +1,93 @@
+resources:
+  jobs:
+    racetrac_dummy_data_prep:
+      name: "[${bundle.target}] RaceTrac Dummy Data Prep"
+      environments:
+        - environment_key: default
+          spec:
+            client: "1"
+      tasks:
+        - task_key: setup_catalog_schema
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/00_setup_catalog_schema.py
+            source: WORKSPACE
+          environment_key: default
+
+        - task_key: generate_dummy_data
+          depends_on:
+            - task_key: setup_catalog_schema
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/01_generate_dummy_data.py
+            source: WORKSPACE
+          environment_key: default
+
+        - task_key: prepare_genie_views
+          depends_on:
+            - task_key: generate_dummy_data
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/04_prepare_genie_views.py
+            source: WORKSPACE
+          environment_key: default
+
+    racetrac_agent_bricks_demo:
+      name: "[${bundle.target}] RaceTrac Agent Bricks Demo"
+      environments:
+        - environment_key: default
+          spec:
+            client: "1"
+      tasks:
+        - task_key: setup_catalog_schema
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/00_setup_catalog_schema.py
+            source: WORKSPACE
+          environment_key: default
+
+        - task_key: generate_dummy_data
+          depends_on:
+            - task_key: setup_catalog_schema
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/01_generate_dummy_data.py
+            source: WORKSPACE
+          environment_key: default
+
+        - task_key: prepare_genie_views
+          depends_on:
+            - task_key: generate_dummy_data
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/04_prepare_genie_views.py
+            source: WORKSPACE
+          environment_key: default
+
+        - task_key: demo_knowledge_assistant
+          depends_on:
+            - task_key: generate_dummy_data
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/02_demo_knowledge_assistant.py
+            source: WORKSPACE
+          environment_key: default
+
+        - task_key: demo_info_extractor
+          depends_on:
+            - task_key: generate_dummy_data
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/03_demo_info_extractor.py
+            source: WORKSPACE
+          environment_key: default
+
+        - task_key: demo_genie_space
+          depends_on:
+            - task_key: prepare_genie_views
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/04_demo_genie_space.py
+            source: WORKSPACE
+          environment_key: default
+
+        - task_key: demo_supervisor
+          depends_on:
+            - task_key: demo_knowledge_assistant
+            - task_key: demo_info_extractor
+            - task_key: demo_genie_space
+          notebook_task:
+            notebook_path: ../packages/notebooks/notebooks/05_demo_supervisor.py
+            source: WORKSPACE
+          environment_key: default

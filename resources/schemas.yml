@@ -1,0 +1,6 @@
+resources:
+  schemas:
+    racetrac_agent_demo_schema:
+      catalog_name: ${var.catalog}
+      name: ${var.schema}
+      comment: "Schema for RaceTrac agent brick demo assets."

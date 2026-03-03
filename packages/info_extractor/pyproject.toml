@@ -1,0 +1,15 @@
+[build-system]
+requires = ["uv_build>=0.9.6,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "info-extractor"
+version = "0.0.1"
+requires-python = ">=3.12,<3.13"
+description = "Information extraction demo brick for RaceTrac operations events."
+dependencies = ["common @ file://${PROJECT_ROOT}/../common"]
+
+[tool.uv.sources]
+
+[tool.uv.sources.common]
+workspace = true

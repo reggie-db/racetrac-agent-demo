@@ -1,0 +1,25 @@
+[build-system]
+requires = ["uv_build>=0.9.6,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "pump-ops-app"
+version = "0.0.1"
+requires-python = ">=3.12,<3.13"
+description = "Reflex UI demo for RaceTrac pump operations agent bricks."
+dependencies = [
+  "common",
+  "genie-space",
+  "info-extractor",
+  "knowledge-assistant",
+  "supervisor",
+  "dbx-reflex @ git+https://github.com/reggie-db/reggie-bricks-py.git#subdirectory=dbx-reflex",
+  "reflex>=0.7.0",
+]
+
+[tool.uv.sources]
+common = { workspace = true }
+genie-space = { workspace = true }
+info-extractor = { workspace = true }
+knowledge-assistant = { workspace = true }
+supervisor = { workspace = true }
