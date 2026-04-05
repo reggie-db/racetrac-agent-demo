@@ -21,6 +21,16 @@ class SupervisorAgent:
         self._info_extractor = InfoExtractorAgent()
         self._genie = GenieSpaceAgent()
 
+    def _build_genie_prompt(self, extracted_signal: object) -> str:
+        """Build a dynamic Genie prompt from extracted pump signal context."""
+        return (
+            "Show risk signals for "
+            f"{extracted_signal.store_id} {extracted_signal.pump_id} "
+            f"with breakdown type {extracted_signal.breakdown_type}, "
+            f"fuel grade {extracted_signal.fuel_grade}, and "
+            f"downtime {extracted_signal.downtime_minutes} minutes."
+        )
+
     def build_digest(
         self, docs: list[dict[str, str]], store_update: str
     ) -> SupervisorDigest:
@@ -30,16 +40,18 @@ class SupervisorAgent:
             documents=docs,
         )
         extracted_signal = self._info_extractor.extract(message=store_update)
-        genie_sql = self._genie.build_sql(
-            prompt="Show stores with top pump breakdown and fuel pricing risk signals."
-        )
+        genie_prompt = self._build_genie_prompt(extracted_signal=extracted_signal)
+        genie_sql = self._genie.build_sql(prompt=genie_prompt)
 
         digest_items = [
             f"Knowledge assistant recommendation: {ka_response['answer']}",
             (
                 "Extracted store signal: "
-                f"{extracted_signal.store_id} {extracted_signal.category} "
-                f"severity={extracted_signal.severity}"
+                f"{extracted_signal.store_id} {extracted_signal.pump_id} "
+                f"{extracted_signal.category} severity={extracted_signal.severity} "
+                f"part={extracted_signal.part_name} "
+                f"breakdown={extracted_signal.breakdown_type} "
+                f"downtime={extracted_signal.downtime_minutes}m"
             ),
             f"Genie query prepared for operators: {genie_sql}",
         ]

@@ -1,11 +1,11 @@
 resources:
   jobs:
     racetrac_dummy_data_prep:
-      name: "[${bundle.target}] RaceTrac Dummy Data Prep"
+      name: "RaceTrac Dummy Data Prep"
       environments:
         - environment_key: default
           spec:
-            client: "1"
+            environment_version: "4"
             dependencies:
               - "lfp-logging @ git+https://github.com/regbo/lfp-logging-py.git"
               - "faker>=37.0.0"
@@ -25,20 +25,12 @@ resources:
             source: WORKSPACE
           environment_key: default
 
-        - task_key: prepare_genie_views
-          depends_on:
-            - task_key: generate_dummy_data
-          notebook_task:
-            notebook_path: ../packages/notebooks/notebooks/04_prepare_genie_views.py
-            source: WORKSPACE
-          environment_key: default
-
     racetrac_agent_bricks_demo:
-      name: "[${bundle.target}] RaceTrac Agent Bricks Demo"
+      name: "RaceTrac Agent Bricks Demo"
       environments:
         - environment_key: default
           spec:
-            client: "1"
+            environment_version: "4"
             dependencies:
               - "lfp-logging @ git+https://github.com/regbo/lfp-logging-py.git"
               - "faker>=37.0.0"

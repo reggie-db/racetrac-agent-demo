@@ -4,6 +4,11 @@ bundle:
 include:
   - resources/*.yml
 
+artifacts:
+  python_artifact:
+    type: whl
+    build: uv build --wheel --all-packages --out-dir dist
+
 variables:
   catalog:
     description: Unity Catalog name for demo assets.

@@ -26,7 +26,7 @@ def _build_timestamp(days_back: int) -> datetime:
     )
 
 
-def generate_store_transactions(row_count: int = 500) -> list[dict[str, object]]:
+def generate_store_transactions(row_count: int = 240) -> list[dict[str, object]]:
     """Create synthetic fuel transaction records for BI and Genie demos."""
     records: list[dict[str, object]] = []
     for _ in range(row_count):
@@ -49,7 +49,7 @@ def generate_store_transactions(row_count: int = 500) -> list[dict[str, object]]
     return records
 
 
-def generate_pump_breakdown_events(row_count: int = 240) -> list[dict[str, object]]:
+def generate_pump_breakdown_events(row_count: int = 120) -> list[dict[str, object]]:
     """Create synthetic pump breakdown and repair events."""
     records: list[dict[str, object]] = []
     for _ in range(row_count):
@@ -70,7 +70,7 @@ def generate_pump_breakdown_events(row_count: int = 240) -> list[dict[str, objec
     return records
 
 
-def generate_pump_telemetry(row_count: int = 600) -> list[dict[str, object]]:
+def generate_pump_telemetry(row_count: int = 260) -> list[dict[str, object]]:
     """Create synthetic pump telemetry events for maintenance forecasting demos."""
     records: list[dict[str, object]] = []
     for _ in range(row_count):
@@ -92,7 +92,7 @@ def generate_pump_telemetry(row_count: int = 600) -> list[dict[str, object]]:
     return records
 
 
-def generate_knowledge_docs(row_count: int = 80) -> list[dict[str, object]]:
+def generate_knowledge_docs(row_count: int = 50) -> list[dict[str, object]]:
     """Create synthetic document chunks for a pump-operations KA-style demo."""
     templates = [
         "Station manager playbook for {topic} in high-volume fueling locations.",
@@ -124,7 +124,7 @@ def generate_knowledge_docs(row_count: int = 80) -> list[dict[str, object]]:
     return records
 
 
-def generate_pump_project_mapping(row_count: int = 60) -> list[dict[str, object]]:
+def generate_pump_project_mapping(row_count: int = 40) -> list[dict[str, object]]:
     """Create synthetic schema mapping samples for pump modernization projects."""
     records: list[dict[str, object]] = []
     for index in range(row_count):

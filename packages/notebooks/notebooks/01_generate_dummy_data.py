@@ -9,6 +9,7 @@ configure_logging()
 
 from common.config import DemoTableRefs  # noqa: E402
 from common.dummy_data import generate_all_demo_data  # noqa: E402
+from common.metadata import build_metadata_sql  # noqa: E402
 from lfp_logging import logs  # noqa: E402
 
 LOG = logs.logger()
@@ -21,3 +22,7 @@ for table_name, records in datasets.items():
     frame = spark.createDataFrame(records)
     frame.write.mode("overwrite").saveAsTable(refs.fq_table(table_name))
     LOG.info("Wrote %s rows to %s", len(records), refs.fq_table(table_name))
+
+for metadata_statement in build_metadata_sql(refs):
+    spark.sql(metadata_statement)
+LOG.info("Applied rich table and column descriptions for demo datasets.")

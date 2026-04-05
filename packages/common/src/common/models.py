@@ -19,10 +19,21 @@ class ExtractedStoreSignal(BaseModel):
     """Structured operations signal extracted from plain text."""
 
     store_id: str = Field(description="Store identifier in the RaceTrac network.")
+    pump_id: str = Field(description="Pump identifier when present in the message.")
     category: str = Field(
         description="Signal category such as pump maintenance, breakdowns, or forecasting."
     )
     severity: str = Field(description="Signal severity: low, medium, or high.")
+    part_name: str = Field(description="Pump component involved in the signal when available.")
+    breakdown_type: str = Field(
+        description="Failure mode extracted from the message when available."
+    )
+    fuel_grade: str = Field(
+        description="Fuel grade mentioned in the message when available."
+    )
+    downtime_minutes: int = Field(
+        description="Extracted downtime in minutes when present, otherwise 0."
+    )
     summary: str = Field(description="Human-readable issue summary.")
     recommended_action: str = Field(description="Action for store operations staff.")
 

@@ -1,0 +1,23 @@
+RaceTrac Pump Extraction Guide
+
+Purpose:
+Extract structured pump incident information from free-form operational updates.
+
+Required fields:
+- store_id: pattern RT-###
+- pump_id: pattern P-## or pump ##
+- severity: infer high for critical/urgent/major, medium for watch/elevated, else low
+- part_name: one of motor, nozzle, meter, seal, filter, valve, hoseline if present
+- breakdown_type: one of pressure_fault, sensor_fault, flow_drop, leak_warning if present
+- downtime_minutes: numeric minutes from text if present
+- recommended_action:
+  - high severity -> Dispatch field technician and stage replacement part within 1 hour.
+  - breakdown/fault/downtime keywords -> Open breakdown ticket and route to store manager and pump vendor queue.
+  - otherwise -> Log issue in daily supervisor digest for triage.
+
+Examples:
+1) "RT-214 pump 07 urgent motor pressure_fault with 47 minutes downtime"
+   -> {"store_id":"RT-214","pump_id":"P-07","severity":"high","part_name":"motor","breakdown_type":"pressure_fault","downtime_minutes":47}
+
+2) "RT-305 pump 12 elevated leak_warning and 18 minutes downtime"
+   -> {"store_id":"RT-305","pump_id":"P-12","severity":"medium","part_name":"unknown_part","breakdown_type":"leak_warning","downtime_minutes":18}
